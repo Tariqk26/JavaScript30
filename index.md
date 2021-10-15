@@ -1,4 +1,4 @@
-## [Whack-a-mole](./30%20-%20Whack%20A%20Mole/index.html)
+## [Whack-a-mole](https://github.com/Tariqk26/JavaScript30/blob/6b6adc69beeadb5916b769bf9b6b0fe8638ec758/30%20-%20Whack%20A%20Mole/index.html)
 Game by Wes Bos, scoreboard by me with help from minna xd
 
 ## [Speech synthesis](./23%20-%20Speech%20Synthesis/index.html)
