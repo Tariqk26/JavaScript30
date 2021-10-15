@@ -8,7 +8,7 @@
 </head>
 <body>
 
-  <h1>Whack-a-mole! <span class="score">0</span></h1>
+  <h1 class="title">Whack-a-mole! <span class="score">0</span></h1>
   <button class="start btn" onClick="startGame()">Start!</button>
 
   <div class="game">
@@ -31,11 +31,23 @@
       <div class="mole"></div>
     </div>
   </div>
+  
+  <div class="hiscore">
+  <h2>Top 5 clickers</h2>
+  <h3>(on this device)</h3>
+  <button class="clear btn" onClick="clearScores()">Clear</button>
+  <table class="scoretable">
+  </table>
+</div>
+
 
 <script>
   const holes = document.querySelectorAll('.hole');
   const scoreBoard = document.querySelector('.score');
   const moles = document.querySelectorAll('.mole');
+  const hiscores = JSON.parse(localStorage.getItem('hiscores')) || [];
+  const scoreList = document.querySelector('.scoretable');
+
   let lastHole;
   let timeUp = false;
   let score = 0;
@@ -62,7 +74,11 @@
     hole.classList.add('up');
     setTimeout(() => { 
       hole.classList.remove('up');
-      if(!timeUp) peep();      
+      if(!timeUp){
+        peep();      
+      } else { 
+        checkScore()
+      }
     }, time)
   }
 
@@ -79,6 +95,40 @@
     score++;
     this.classList.remove('up');
     scoreBoard.textContent = score;
+  }
+
+ function populateTable() {
+    scoreList.innerHTML = hiscores.map((row) => {
+      return `<tr><td>${row.clicker}</td><td>${row.score}</tr>`;
+    }).join('');
+  }
+
+  function checkScore() {
+    let worstScore = 0;
+    if (hiscores.length > 4) {
+      worstScore = hiscores[hiscores.length - 1].score;
+    }
+
+    if (score > worstScore) {
+      const clicker = window.prompt(`${score} – Top score! What's your name?`);
+      hiscores.push({score, clicker});
+    }
+
+    hiscores.sort((a, b) => a.score > b.score ? -1 : 1);
+
+    // Remove the worst score when table too long
+    if (hiscores.length > 5) {
+      hiscores.pop();
+    }
+
+    populateTable();
+    localStorage.setItem('hiscores', JSON.stringify(hiscores));
+  }
+
+  function clearScores() {
+    hiscores.splice(0, hiscores.length);
+    localStorage.setItem('hiscores', JSON.stringify(hiscores));
+    populateTable(hiscores, scoreList);
   }
 
 moles.forEach(mole => mole.addEventListener('click', bonk));

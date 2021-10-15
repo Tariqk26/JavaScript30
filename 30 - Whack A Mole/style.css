@@ -31,8 +31,8 @@ h1 {
   line-height: 1;
   font-family: 'Amatic SC', cursive;
   margin: 0 auto;
-
 }
+
 .score {
   background: rgba(255,255,255,0.2);
   padding: 0 3rem;
@@ -78,4 +78,35 @@ h1 {
 
 .hole.up .mole {
   top: 0;
+}
+.clear.btn {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 5rem;
+  line-height: 1;
+  font-family: 'Amatic SC', cursive;
+  margin: 0 auto;
+}
+
+
+h2 {
+  text-align: center;
+  font-size: 5rem;
+  line-height: 1;
+  margin-bottom: 0;
+}
+h3 {
+  text-align: center;
+  font-size: 2rem;
+  line-height: 1;
+  margin: 0 0 15px 0;
+}
+
+.scoretable {
+  width: 350px;
+  font-size: 3rem;
+  margin: 10px auto;
 }
