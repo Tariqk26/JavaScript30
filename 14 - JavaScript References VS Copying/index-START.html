@@ -82,8 +82,8 @@
     const dev = Object.assign({}, wes);
     //to do this on a 2nd level you would need to look into creating a deep clone function for the Object. 
 
-    // referred to as the poormans deep clone. 
     const dev2 = JSON.parse(JSON.stringify(wes));
+    // referred to as the poormans deep clone, because stringify is converting the object to a string, then back into an object with parse (could lead to performance issues) 
     </script>
 
 </body>
