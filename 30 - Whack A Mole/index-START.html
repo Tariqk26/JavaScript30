@@ -35,7 +35,7 @@
   <div class="hiscore">
   <h2>Top 5 clickers</h2>
   <h3>(on this device)</h3>
-  <button class="clear btn"onClick="clearScores()">Clear</button>
+  <button class="clear btn" onClick="clearScores()">Clear</button>
   <table class="scoretable">
   </table>
 </div>
@@ -44,7 +44,7 @@
   const holes = document.querySelectorAll('.hole');
   const scoreBoard = document.querySelector('.score');
   const moles = document.querySelectorAll('.mole');
-   const hiscores = JSON.parse(localStorage.getItem('hiscores')) || [];
+  const hiscores = JSON.parse(localStorage.getItem('hiscores')) || [];
   const scoreList = document.querySelector('.scoretable');
 
   let lastHole;
