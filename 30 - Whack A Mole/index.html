@@ -9,7 +9,7 @@
 <body>
 
   <h1>Whack-a-mole! <span class="score">0</span></h1>
-  <button onClick="startGame()">Start!</button>
+  <button class="start btn" onClick="startGame()">Start!</button>
 
   <div class="game">
     <div class="hole hole1">
@@ -32,11 +32,19 @@
     </div>
   </div>
 
+  <div class="hiscore">
+  <h2>Top 5 clickers</h2>
+  <h3>(on this device)</h3>
+  <button class="clear btn" onClick="clearScores()">Clear</button>
+  <table class="scoretable">
+  </table>
+</div>
+
 <script>
   const holes = document.querySelectorAll('.hole');
   const scoreBoard = document.querySelector('.score');
   const moles = document.querySelectorAll('.mole');
-   const hiscores = JSON.parse(localStorage.getItem('hiscores')) || [];
+  const hiscores = JSON.parse(localStorage.getItem('hiscores')) || [];
   const scoreList = document.querySelector('.scoretable');
 
   let lastHole;
