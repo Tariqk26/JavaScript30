@@ -21,6 +21,18 @@ h1 {
   margin-bottom: 0;
 }
 
+.start.btn {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 10rem;
+  line-height: 1;
+  font-family: 'Amatic SC', cursive;
+  margin: 0 auto;
+
+}
 .score {
   background: rgba(255,255,255,0.2);
   padding: 0 3rem;
