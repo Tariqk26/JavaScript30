@@ -25,8 +25,11 @@ function timer(seconds) {
 
 function displayTimeLeft(seconds) {
     const minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+    const remainderMinutes = minutes % 60;
+    const isHour = hours >= 1 ? hours + ':' : '';
     const remainderSeconds = seconds % 60;
-    const display = `${minutes}:${remainderSeconds < 10 ? '0' : ''}${remainderSeconds}`;
+    const display = `${isHour}${remainderMinutes}:${remainderSeconds < 10 ? '0' : ''}${remainderSeconds}`;
     timerDisplay.textContent = display;
 }
 
@@ -34,8 +37,9 @@ function displayEndTime(timestamp) {
     const end = new Date(timestamp);
     const hour = end.getHours();
     const adjustedHour = hour > 12 ? hour - 12 : hour
+    const timeOfDay = hour >= 12 ? 'PM' : 'AM'
     const minutes = end.getMinutes();
-    endTime.textContent = `Be back at ${adjustedHour}:${minutes < 10 ? '0' : ''}${minutes}`;
+    endTime.textContent = `Be back at ${adjustedHour}:${minutes < 10 ? '0' : ''}${minutes}${timeOfDay}`;
 
 }
 
